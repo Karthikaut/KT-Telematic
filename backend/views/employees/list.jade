@@ -1,0 +1,35 @@
+extends ../layouts/header
+block content
+  include ../layouts/navigation
+  h2 Employees
+  form(method='GET')
+    input(type='text', name='search', placeholder='Search by name/email/phone')
+    select(name='status')
+      option(value='') All
+      option(value='Active') Active
+      option(value='Inactive') Inactive
+    button(type='submit') Filter
+  a(href='/employees/add') Add Employee
+  table
+    thead
+      tr
+        th Name
+        th Email
+        th Phone
+        th Branch
+        th Department
+        th Status
+        th Actions
+    tbody
+      each emp in employees
+        tr
+          td= emp.name
+          td= emp.email
+          td= emp.phone
+          td= emp.branch
+          td= emp.department
+          td= emp.status
+          td
+            a(href=`/employees/view/${emp.id}`) View
+            | 
+            a(href=`/employees/edit/${emp.id}`) Edit

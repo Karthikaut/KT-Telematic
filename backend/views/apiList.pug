@@ -1,0 +1,22 @@
+doctype html
+html
+  head
+    title= title
+    link(rel="stylesheet", href="/css/bootstrap.min.css")
+  body
+    .container.mt-5
+      h1.text-primary.mb-4= title
+      table.table.table-bordered.table-striped
+        thead
+          tr
+            th Method
+            th Endpoint
+            th Description
+        tbody
+          each api in data
+            tr
+              td 
+                code.text-uppercase= api.method
+              td 
+                code= api.path
+              td= api.description

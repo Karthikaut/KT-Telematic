@@ -1,0 +1,14 @@
+extends ./layouts/header
+block content
+  include ./layouts/navigation
+  h2 Return Asset
+  form(action='/assets/return', method='POST')
+    select(name='employeeId')
+      each emp in employees
+        option(value=emp.id)= emp.name
+    select(name='assetId')
+      each asset in assets
+        option(value=asset.id)= asset.serialNumber
+    input(type='text', name='reason', placeholder='Reason')
+    button(type='submit') Process Return
+    a(href='/assets') Cancel

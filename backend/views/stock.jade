@@ -1,0 +1,19 @@
+extends ./layouts/header
+block content
+  include ./layouts/navigation
+  h2 Stock Overview
+  table
+    thead
+      tr
+        th Branch
+        th Type
+        th Total In Stock
+        th Total Value
+    tbody
+      each item in stock
+        tr
+          td= item.branch
+          td= item.type
+          td= item.totalInStock
+          td= item.totalValue
+  p Grand Total Value: #{grandTotal}

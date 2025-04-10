@@ -1,0 +1,59 @@
+doctype html
+html
+  head
+    title Asset Management
+    meta(charset='UTF-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+
+    // Bootstrap + DataTables CSS
+    link(rel='stylesheet', href='/libs/bootstrap.min.css')
+    link(rel='stylesheet', href='/libs/datatables.min.css')
+    link(rel='stylesheet', href='/css/style.css')
+
+  body
+    .container.mt-5
+      h2.text-center.mb-4.text-primary.fw-bold Asset Inventory Dashboard
+
+      .table-responsive.shadow-lg.rounded
+        table#assetTable.table.table-striped.table-bordered.table-hover
+          thead
+            tr
+              th ID
+              th Name
+              th Serial Number
+              th Status
+          tbody
+            if data.length
+              if data1.length
+               each item in data
+                each item1 in data1
+                 tr
+                  td= item.id
+                  td= item1.name
+                  td= item.serialNumber
+                  td= item.status
+            else
+              tr
+                td(colspan='4') No data available
+
+    // JavaScript Includes
+    script(src='/libs/jquery.min.js')
+    script(src='/libs/bootstrap.bundle.min.js')
+    script(src='/libs/datatables.min.js')
+
+    // DataTables Initialization
+    script.
+      $(document).ready(function () {
+        $('#assetTable').DataTable({
+          pageLength: 10,
+          responsive: true,
+          language: {
+            search: "Filter records:",
+            lengthMenu: "Show _MENU_ entries per page",
+            zeroRecords: "Nothing found - sorry!",
+            info: "Showing _START_ to _END_ of _TOTAL_ entries",
+            infoEmpty: "No records available",
+            infoFiltered: "(filtered from _MAX_ total records)"
+          }
+        });
+      });

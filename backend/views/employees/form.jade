@@ -1,0 +1,15 @@
+extends ../layouts/header
+block content
+  include ../layouts/navigation
+  h2= formTitle
+  form(action=formAction, method='POST')
+    input(type='text', name='name', value=employee.name, placeholder='Name')
+    input(type='email', name='email', value=employee.email, placeholder='Email')
+    input(type='text', name='phone', value=employee.phone, placeholder='Phone')
+    input(type='text', name='branch', value=employee.branch, placeholder='Branch')
+    input(type='text', name='department', value=employee.department, placeholder='Department')
+    select(name='status')
+      option(value='Active', selected=employee.status === 'Active') Active
+      option(value='Inactive', selected=employee.status === 'Inactive') Inactive
+    button(type='submit') Save
+    a(href='/employees') Cancel

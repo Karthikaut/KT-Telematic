@@ -1,0 +1,19 @@
+extends ../layouts/header
+block content
+  include ../layouts/navigation
+  h2 Asset History
+  table
+    thead
+      tr
+        th Event
+        th Date
+        th Employee
+        th Reason
+    tbody
+      each event in history
+        tr
+          td= event.action
+          td= event.date
+          td= event.employeeName
+          td= event.reason
+  a(href='/assets') Back

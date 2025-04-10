@@ -1,0 +1,9 @@
+extends ../layouts/header
+block content
+  include ../layouts/navigation
+  h2= formTitle
+  form(action=formAction, method='POST')
+    input(type='text', name='name', value=category.name, placeholder='Name')
+    input(type='text', name='description', value=category.description, placeholder='Description')
+    button(type='submit') Save
+    a(href='/categories') Cancel

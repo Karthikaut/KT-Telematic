@@ -1,0 +1,34 @@
+extends ../layouts/header
+block content
+  include ../layouts/navigation
+  h2 Assets
+  form(method='GET')
+    input(type='text', name='search', placeholder='Search by Make/Model')
+    select(name='status')
+      option(value='') All
+      option(value='In Stock') In Stock
+      option(value='Assigned') Assigned
+      option(value='Scrapped') Scrapped
+    button(type='submit') Filter
+  a(href='/assets/add') Add Asset
+  table
+    thead
+      tr
+        th Serial Number
+        th Make
+        th Model
+        th Assigned To
+        th Status
+        th Actions
+    tbody
+      each asset in assets
+        tr
+          td= asset.serialNumber
+          td= asset.make
+          td= asset.model
+          td= asset.assignedToName
+          td= asset.status
+          td
+            a(href=`/assets/view/${asset.id}`) View
+            | 
+            a(href=`/assets/edit/${asset.id}`) Edit

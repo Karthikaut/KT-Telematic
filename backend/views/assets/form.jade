@@ -1,0 +1,16 @@
+extends ../layouts/header
+block content
+  include ../layouts/navigation
+  h2= formTitle
+  form(action=formAction, method='POST')
+    input(type='text', name='serialNumber', value=asset.serialNumber, placeholder='Serial Number')
+    input(type='text', name='make', value=asset.make, placeholder='Make')
+    input(type='text', name='model', value=asset.model, placeholder='Model')
+    input(type='date', name='purchaseDate', value=asset.purchaseDate)
+    input(type='number', name='purchasePrice', value=asset.purchasePrice, placeholder='Purchase Price')
+    select(name='status')
+      option(value='In Stock', selected=asset.status === 'In Stock') In Stock
+      option(value='Assigned', selected=asset.status === 'Assigned') Assigned
+      option(value='Scrapped', selected=asset.status === 'Scrapped') Scrapped
+    button(type='submit') Save
+    a(href='/assets') Cancel

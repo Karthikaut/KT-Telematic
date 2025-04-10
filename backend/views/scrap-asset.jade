@@ -1,0 +1,11 @@
+extends ./layouts/header
+block content
+  include ./layouts/navigation
+  h2 Scrap Asset
+  form(action='/assets/scrap', method='POST')
+    select(name='assetId')
+      each asset in assets
+        option(value=asset.id)= asset.serialNumber
+    input(type='text', name='reason', placeholder='Reason')
+    button(type='submit') Scrap
+    a(href='/assets') Cancel
